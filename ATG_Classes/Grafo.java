@@ -10,6 +10,7 @@ public class Grafo {
     public int numeroDeVertices = 0;
     public List<Aresta> arestas = new ArrayList<Aresta>();
    
+    // OBS: a raiz de path é a pasta do projeto
     public Grafo (String path) {
          
             try {
@@ -21,18 +22,14 @@ public class Grafo {
              
               while (linha != null && !linha.isEmpty()) {
                 linha = lerArq.readLine(); // 2a até última linha
-                arestas.add(new Aresta(linha.split(" ")));
+                if (linha != null) arestas.add(new Aresta(linha.split(" ")));
               }
               arq.close();
             } catch (IOException e) {
-                System.err.printf("Erro na abertura do arquivo: %s.\n",
-                  e.getMessage());
+                System.err.printf("Erro na abertura do arquivo: %s.\n", 
+                		e.getMessage());
             }
+         
           }
-
-
-   
-   
-     
-
+ 
       }

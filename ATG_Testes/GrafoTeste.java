@@ -2,18 +2,17 @@ package ATG_Testes;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 import ATG_Classes.Aresta;
 import ATG_Classes.Grafo;
 
 public class GrafoTeste {
     
-	String caminho1 = "teste1.txt";
-	String caminho2 = "teste2.txt";
+	String teste1 = "teste1.txt";
+	String teste2 = "teste2.txt";
 	
-	Grafo testeA = new Grafo (caminho1);
-	Grafo testeB = new Grafo (caminho2);
+	Grafo testeA = new Grafo (teste1);
+	Grafo testeB = new Grafo (teste2);
 
     @Test
     public void construtorGrafoTeste() {
@@ -46,17 +45,17 @@ public class GrafoTeste {
         
         // assert statements
         //testeA
-        assertEquals(0, a0.vertice1, 1);
-        assertEquals(0, a1.vertice1, 2);
-        assertEquals(0, a2.vertice1, 5);
-        assertEquals(0, a3.vertice1, 4);
-        assertEquals(0, a4.vertice1, 1);
+        assertEquals(1, a0.vertice1);
+        assertEquals(2, a1.vertice1);
+        assertEquals(5, a2.vertice1);
+        assertEquals(4, a3.vertice1);
+        assertEquals(1, a4.vertice1);
         
-        assertEquals(0, a0.vertice2, 2);
-        assertEquals(0, a1.vertice2, 5);
-        assertEquals(0, a2.vertice2, 3);
-        assertEquals(0, a3.vertice2, 5);
-        assertEquals(0, a4.vertice2, 5);
+        assertEquals(2, a0.vertice2);
+        assertEquals(5, a1.vertice2);
+        assertEquals(3, a2.vertice2);
+        assertEquals(5, a3.vertice2);
+        assertEquals(5, a4.vertice2);
         
         assertEquals(0, a0.peso, 0);
         assertEquals(0, a1.peso, 0);
@@ -65,26 +64,26 @@ public class GrafoTeste {
         assertEquals(0, a4.peso, 0);
         
         //testeB  
-        assertEquals(0, b0.vertice1, 1);
-        assertEquals(0, b1.vertice1, 2);
-        assertEquals(0, b2.vertice1, 5);
-        assertEquals(0, b3.vertice1, 3);
-        assertEquals(0, b4.vertice1, 4);
-        assertEquals(0, b5.vertice1, 1);
+        assertEquals(1, b0.vertice1);
+        assertEquals(2, b1.vertice1);
+        assertEquals(5, b2.vertice1);
+        assertEquals(3, b3.vertice1);
+        assertEquals(4, b4.vertice1);
+        assertEquals(1, b5.vertice1);
         
-        assertEquals(0, b0.vertice2, 2);
-        assertEquals(0, b1.vertice2, 5);
-        assertEquals(0, b2.vertice2, 3);
-        assertEquals(0, b3.vertice2, 4);
-        assertEquals(0, b4.vertice2, 5);
-        assertEquals(0, b5.vertice2, 5);
+        assertEquals(2, b0.vertice2);
+        assertEquals(5, b1.vertice2);
+        assertEquals(3, b2.vertice2);
+        assertEquals(4, b3.vertice2);
+        assertEquals(5, b4.vertice2);
+        assertEquals(5, b5.vertice2);
         
-        assertEquals(0, b0.peso, 0.1);
-        assertEquals(0, b1.peso, 0.2);
-        assertEquals(0, b2.peso, 5);
-        assertEquals(0, b3.peso, -9.5);
-        assertEquals(0, b4.peso, 2.3);
-        assertEquals(0, b5.peso, 1);
+        assertEquals( 0.1, b0.peso, 0);
+        assertEquals( 0.2, b1.peso, 0);
+        assertEquals( 5.0, b2.peso, 0);
+        assertEquals(-9.5, b3.peso, 0);
+        assertEquals( 2.3, b4.peso, 0);
+        assertEquals( 1.0, b5.peso, 0);
         
     }
 }
