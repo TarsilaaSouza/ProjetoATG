@@ -3,6 +3,9 @@ package atg;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class GaphControl {
 
@@ -38,28 +41,58 @@ public class GaphControl {
 		return grafo;
 	}
 
-	public Graph readWeightedGraph(String path) {
-		// TODO readWeightedGraph
-		return null;
+	public Graph readWeightedGraph(String path) throws IOException {
+		return readGraph(path); // construtor de Aresta identifica se eh com peso
 	}
 
 	public int getVertexNumber(Graph grafo) {
-		// TODO getVertexNumber
-		return 0;
+		return grafo.getVertexNumber();
 	}
 
 	public int getEdgeNumber(Graph grafo) {
-		// TODO getEdgeNumber
-		return 0;
+		return grafo.getEdgeNumber();
 	}
 
 	public float getMeanEdge(Graph grafo) {
-		// TODO getMeanEdge
-		return 0;
+		// Grau Medio = (Numero de arestas) / (numero de vertices)
+		float grauMedio = grafo.getEdgeNumber() / grafo.getVertexNumber();
+		return grauMedio;
 	}
 
 	public String graphRepresentation(Graph grafo, Graph.Tipo tipo) {
-		// TODO graphRepresentation
+		String result = null;
+
+		if (tipo.equals(Graph.Tipo.AM)) {
+			result = representacaoAM(grafo);
+		} else { // Tipo.AL
+			result = representacaoAL(grafo);
+		}
+
+		return result;
+	}
+
+	private String representacaoAM(Graph grafo) {
+		float[][] matriz = new float[grafo.getVertexNumber()][grafo.getVertexNumber()];
+		for (Aresta aresta : grafo.getArestas()) {
+			Vertice[] vertices = aresta.getVertices();
+			int valorA = vertices[0].getValor();
+			int valorB = vertices[1].getValor();
+			matriz[valorA][valorB] = aresta.getPeso(); // vale nos dois sentidos
+			matriz[valorB][valorA] = aresta.getPeso(); // vale nos dois sentidos
+		}
+
+		StringBuilder result = new StringBuilder();
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz.length; j++) {
+				result.append(matriz[i][j] + " ");
+			}
+			result.append("\n");
+		}
+		return result.toString();
+	}
+
+	private String representacaoAL(Graph grafo) {
+		// TODO representacaoAL
 		return null;
 	}
 
@@ -74,8 +107,13 @@ public class GaphControl {
 	}
 
 	public boolean connected(Graph grafo) {
-		// TODO connected
-		return false;
+		int numVertices = grafo.getVertexNumber();
+		Set<Vertice> verticesVisitados = new HashSet<Vertice>(); // sem repeticoes
+		for (Aresta aresta : grafo.getArestas()) {
+			verticesVisitados.addAll(Arrays.asList(aresta.getVertices()));
+		}
+
+		return numVertices == verticesVisitados.size();
 	}
 
 	public String shortestPath(Vertice v1, Vertice v2) {
