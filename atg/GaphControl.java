@@ -44,6 +44,7 @@ public class GaphControl {
 		return grafo;
 	}
 
+
 	private void AssociaGraphAresta(Graph grafo) {
 		for (int i = 0; i < grafo.getArestas().size(); i++) {		 
 			 grafo.getArestas().get(i).getV1().getArestas().add(grafo.getArestas().get(i));
@@ -51,26 +52,27 @@ public class GaphControl {
 		}
 	}
 	
-	public Graph readWeightedGraph(String path) {
-		// TODO readWeightedGraph
-		return null;
+
+	public Graph readWeightedGraph(String path) throws IOException {
+		return readGraph(path); // construtor de Aresta identifica se eh com peso
+
 	}
 
 	public int getVertexNumber(Graph grafo) {
-		// TODO getVertexNumber
-		return 0;
+		return grafo.getVertexNumber();
 	}
 
 	public int getEdgeNumber(Graph grafo) {
-		// TODO getEdgeNumber
-		return 0;
+		return grafo.getEdgeNumber();
 	}
 
 	public float getMeanEdge(Graph grafo) {
 		// Grau Medio = (Numero de arestas) / (numero de vertices)
-		float grauMedio = grafo.getArestas().size() / grafo.getVertexNumber();
+
+		float grauMedio = grafo.getEdgeNumber() / grafo.getVertexNumber();
+		
 		return grauMedio;
-			
+
 	}
 
 	public String graphRepresentation(Graph grafo, Graph.Tipo tipo) {
@@ -83,6 +85,7 @@ public class GaphControl {
 		}
 
 		return result;
+
 	}
 
 	private String representacaoAM(Graph grafo) {
@@ -172,10 +175,13 @@ public class GaphControl {
 		int numVertices = grafo.getVertexNumber();
 		Set<Vertice> verticesVisitados = new HashSet<Vertice>(); // sem repeticoes
 		for (Aresta aresta : grafo.getArestas()) {
+
 			Vertice [] vertices = new Vertice[2];
 			vertices[0]= aresta.getV1();
 			vertices[1] = aresta.getV2();
 			verticesVisitados.addAll(Arrays.asList(vertices));
+			verticesVisitados.addAll(Arrays.asList(vertices));
+
 		}
 
 		return numVertices == verticesVisitados.size();
@@ -235,9 +241,7 @@ public class GaphControl {
 					
 			}
 				
-		}	
-			
-		
+		}		
 		return caminho;
 	}
 	

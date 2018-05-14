@@ -25,13 +25,6 @@ public class Vertice {
 		this.arestas = arestas;
 	}
 	
-
-	
-	@Override
-	public String toString() {
-		return String.valueOf(valor);
-	}
-
 	public boolean getPassou() {
 		return passou;
 	}
@@ -46,6 +39,11 @@ public class Vertice {
 
 	public void setPai(int pai) {
 		this.pai = pai;
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(valor);
 	}
 
 }
