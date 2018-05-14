@@ -29,7 +29,7 @@ public class GaphControl {
 				linha = lerArq.readLine();
 			}
 			
-			AssociaGraphAresta(grafo);
+			AssociaGraphAresta(grafo);// associas as arestas a seus vertices pertencentes
 
 		} catch (IOException e) {
 			System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
@@ -113,17 +113,17 @@ public class GaphControl {
 	}
 	public String BFS(Graph grafo, Vertice vertice) {
 		
-		ArrayList<Integer> busca = new ArrayList<Integer>();	
-		ArrayList<Vertice> aux1 = new ArrayList<Vertice>();
-		ArrayList<Vertice> aux2 = new ArrayList<Vertice>();
+		ArrayList<Integer> busca = new ArrayList<Integer>(); //vertice nivel pai	em ordem de descoberta
+		ArrayList<Vertice> aux1 = new ArrayList<Vertice>(); //fila de nos pais a serem visitados
+		ArrayList<Vertice> aux2 = new ArrayList<Vertice>(); //fila de nos filhos a serem visitdados
 		int nivel = 0;
 		
-		aux1.add(vertice);
+		aux1.add(vertice);//adiciona a raiz a aux1 para inicio da iteracao
 		vertice.setPai(0);//seta o pai da raiz para zero
 		
-		while( aux1.size() > 0) {		
-			for (int i = 0; i < aux1.size(); i++) {
-				
+		while( aux1.size() > 0) {	
+			
+			for (int i = 0; i < aux1.size(); i++) {	
 				if(aux1.get(i).getPassou() == false) {//verifrifica se o no ja nao foi atingido por outra ramificacao.
 					busca.add(aux1.get(i).getValor()); 
 					busca.add(nivel);
@@ -131,16 +131,17 @@ public class GaphControl {
 					vertice.setPassou(true);
 					for (int j = 0; i < vertice.getArestas().size(); j++) {
 						proxVertice(vertice, vertice.getArestas().get(j)).setPai(aux1.get(i).getValor());//associa o no pai
-						aux2.add(proxVertice(vertice, vertice.getArestas().get(j)));//gera lista dos proximos nos a serem percorridos
+						aux2.add(proxVertice(vertice, vertice.getArestas().get(j)));//adiciona lista dos proximos nos filhos serem percorridos
 					}
-					aux1 = aux2;
-					aux2.clear();
+					
+					aux1 = aux2; //todos os nos pai ja foram percoridos, filhos se tornam a lista de nos pai
+					aux2.clear(); //lista de nos filhos e esvaziada para o proximo ciclo de iteracoes
 				}			
 			}
 			nivel++;
 		}
 			
-		return criaStringDeSaida(grafo, busca);
+		return criaStringDeSaida(grafo, busca);//formata o resutltado da busca para a string esperada
 	}
 	
 	private String criaStringDeSaida(Graph grafo,ArrayList<Integer> busca) {
@@ -164,8 +165,6 @@ public class GaphControl {
 		return retorno;
 	}
 	
-	
-	
 	public String DFS(Graph grafo, Vertice vertice) {
 		// TODO DFS
 		return null;
@@ -179,7 +178,6 @@ public class GaphControl {
 			Vertice [] vertices = new Vertice[2];
 			vertices[0]= aresta.getV1();
 			vertices[1] = aresta.getV2();
-			verticesVisitados.addAll(Arrays.asList(vertices));
 			verticesVisitados.addAll(Arrays.asList(vertices));
 
 		}
@@ -245,7 +243,7 @@ public class GaphControl {
 		return caminho;
 	}
 	
-	private Vertice proxVertice( Vertice v1,Aresta a) {
+	private Vertice proxVertice( Vertice v1,Aresta a) { //retorna o vertice da outra ponta da aresta
 		if(a.getV1() != v1) {
 			return a.getV1();
 		}else {
