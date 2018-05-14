@@ -24,14 +24,14 @@ public class ArestaTest {
 
 	@Test
 	public void testGetVertices() {
-		assertEquals(1, testeA.getVertices()[0].getValor());
-		assertEquals(2, testeA.getVertices()[1].getValor());
+		assertEquals(1, testeA.getV1().getValor());
+		assertEquals(2, testeA.getV2().getValor());
 
-		assertEquals(1, testeB.getVertices()[0].getValor());
-		assertEquals(2, testeB.getVertices()[1].getValor());
+		assertEquals(1, testeB.getV1().getValor());
+		assertEquals(2, testeB.getV2().getValor());
 
-		assertEquals(1, testeC.getVertices()[0].getValor());
-		assertEquals(2, testeC.getVertices()[1].getValor());
+		assertEquals(1, testeC.getV1().getValor());
+		assertEquals(2, testeC.getV2().getValor());
 	}
 
 	@Test

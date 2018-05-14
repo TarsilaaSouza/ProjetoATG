@@ -6,7 +6,7 @@ import java.util.List;
 public class Graph {
 
 	private int vertexNumber;
-	public List<Aresta> arestas;
+	private ArrayList<Aresta> arestas;
 
 	protected Graph(int numVertice) {
 		this.vertexNumber = numVertice;
@@ -23,6 +23,10 @@ public class Graph {
 
 	public enum Tipo {
 		AM, AL
+	}
+	
+	public ArrayList<Aresta> getArestas() {
+		return arestas;
 	}
 
 }
