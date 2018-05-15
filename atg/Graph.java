@@ -11,7 +11,7 @@ public class Graph {
 	protected Graph(int numVertice) {
 		this.vertexNumber = numVertice;
 		arestas = new ArrayList<Aresta>();
-		verticesGraph = new ArrayList<>();
+		verticesGraph = new ArrayList<Vertice>();
 	}
 
 	public enum Tipo {

@@ -53,7 +53,7 @@ public abstract class GraphControl {
 				lerArq.close();
 			}
 		}
-		showGraph(grafo);
+//		showGraph(grafo);
 		return grafo;
 	}
 
