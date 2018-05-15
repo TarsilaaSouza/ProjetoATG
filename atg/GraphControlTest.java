@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class GaphControlTest {
+public class GraphControlTest {
 
 	@Test
 	public void testReadGraph() {

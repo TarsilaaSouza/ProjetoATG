@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class GaphControl {
+public class GraphControl {
 
 	public Graph readGraph(String path) throws IOException {
 		FileReader arq = null;
