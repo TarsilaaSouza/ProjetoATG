@@ -12,7 +12,7 @@ public class Vertice {
 	public Vertice(int valor) {
 		this.valor = valor;
 	}
-
+		
 	public int getValor() {
 		return valor;
 	}
@@ -21,15 +21,19 @@ public class Vertice {
 		return arestas;
 	}
 
-	public void setArestas(ArrayList<Aresta> arestas) {
-		this.arestas = arestas;
-	}
-	
-	public boolean getPassou() {
+	/*
+	 * O metodo statusVertice ira retornar true para os metodos de busca determinarem
+	 * se o respectivo vertice ja foi atingido
+	 */
+	public boolean statusVertice() {
 		return passou;
 	}
 
-	public void setPassou(boolean passou) {
+	/*
+	 * O metodo alteraStatusVertice sera utilizado para alterar a variavel evidenciando
+	 * que o no ja foi atingido pelo metodo de busca
+	 */
+	public void alteraStatusVertice(boolean passou) {
 		this.passou = passou;
 	}
 

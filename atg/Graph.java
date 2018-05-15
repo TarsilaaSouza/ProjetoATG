@@ -7,11 +7,12 @@ public class Graph {
 
 	private int vertexNumber;
 	private ArrayList<Aresta> arestas;
-
+	private Vertice[] verticesGraph;
 
 	protected Graph(int numVertice) {
 		this.vertexNumber = numVertice;
 		arestas = new ArrayList<Aresta>();
+		verticesGraph = new Vertice[numVertice];
 	}
 
 	public enum Tipo {
@@ -32,6 +33,10 @@ public class Graph {
 	
 	public ArrayList<Aresta> getArestas() {
 		return arestas;
+	}
+
+	public Vertice[] getVerticesGraph() {
+		return verticesGraph;
 	}
 
 }
