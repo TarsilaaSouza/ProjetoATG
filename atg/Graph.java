@@ -1,7 +1,6 @@
 package atg;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Graph {
 
@@ -30,7 +29,7 @@ public class Graph {
 	public void addAresta(Aresta aresta) {
 		arestas.add(aresta);
 	}
-	
+
 	public ArrayList<Aresta> getArestas() {
 		return arestas;
 	}
@@ -38,5 +37,4 @@ public class Graph {
 	public Vertice[] getVerticesGraph() {
 		return verticesGraph;
 	}
-
 }

@@ -1,7 +1,5 @@
 package atg;
 
-import java.util.Arrays;
-
 public class Aresta {
 
 	private Vertice v1;
