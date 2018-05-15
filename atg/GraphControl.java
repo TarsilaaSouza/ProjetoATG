@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.JFrame;
 
 public abstract class GraphControl {
 
@@ -52,6 +53,7 @@ public abstract class GraphControl {
 				lerArq.close();
 			}
 		}
+		showGraph(grafo);
 		return grafo;
 	}
 
@@ -410,5 +412,17 @@ public abstract class GraphControl {
 	public static String mst(Graph grafo) {
 		// TODO mst
 		return null;
+	}
+	
+	public static void showGraph (Graph grafo) {
+		GraphJGraphX applet = new GraphJGraphX(grafo);
+        applet.init();
+        
+        JFrame frame = new JFrame();
+        frame.getContentPane().add(applet);
+        frame.setTitle("Graph");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
 	}
 }
