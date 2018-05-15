@@ -78,18 +78,15 @@ public abstract class GraphControl {
 	private static void criaListaDeVertices(Graph graph) {
 		for (int i = 0; i < graph.getArestas().size(); i++) {
 			if (!graph.getArestas().get(i).getV1().statusVertice()) {
-				graph.getVerticesGraph()[graph.getArestas().get(i).getV1().getValor() - 1] = graph.getArestas().get(i).getV1();
+				graph.getVerticesGraph().add( graph.getArestas().get(i).getV1() );
 				graph.getArestas().get(i).getV1().alteraStatusVertice(true);
 			}
 
 			if (!graph.getArestas().get(i).getV2().statusVertice()) {
-				graph.getVerticesGraph()[graph.getArestas().get(i).getV2().getValor() - 1] = graph.getArestas().get(i).getV2();
+				graph.getVerticesGraph().add( graph.getArestas().get(i).getV2() );
 				graph.getArestas().get(i).getV2().alteraStatusVertice(true);
 
 			}
-
-			graph.getArestas().get(i).getV1().getArestas().add(graph.getArestas().get(i));
-			graph.getArestas().get(i).getV2().getArestas().add(graph.getArestas().get(i));
 		}
 	}
 
@@ -100,8 +97,8 @@ public abstract class GraphControl {
 	 * @param graph
 	 */
 	private static void resetStatusVertex(Graph graph) {
-		for (int i = 0; i < graph.getVerticesGraph().length; i++) {
-			graph.getVerticesGraph()[i].alteraStatusVertice(false);
+		for (int i = 0; i < graph.getVerticesGraph().size(); i++) {
+			graph.getVerticesGraph().get(i).alteraStatusVertice(false);
 		}
 	}
 
@@ -210,11 +207,11 @@ public abstract class GraphControl {
 	private static String representacaoAL(Graph grafo) {
 		String retorno = "";
 
-		for (int i = 0; i < grafo.getVerticesGraph().length; i++) {
-			retorno += i + " ";
+		for (int i = 0; i < grafo.getVerticesGraph().size(); i++) {
+			retorno += grafo.getVerticesGraph().get(i).getValor()  + " ";
 
-			for (int j = 0; j < grafo.getVerticesGraph()[i].getArestas().size(); j++) {
-				retorno += proxVertice(grafo.getVerticesGraph()[i], grafo.getVerticesGraph()[i].getArestas().get(j)) + " ";
+			for (int j = 0; j < grafo.getVerticesGraph().get(i).getArestas().size(); j++) {
+				retorno += proxVertice(grafo.getVerticesGraph().get(i), grafo.getVerticesGraph().get(i).getArestas().get(j)) + " ";
 			}
 
 			retorno += "/n";
